@@ -5,6 +5,10 @@
     {
       "path": "/courses.{format}",
       "description": ""
+    },
+    {
+      "path": "/subjects.{format}"
     }
+  
   ]
 }

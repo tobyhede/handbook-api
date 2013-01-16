@@ -2,19 +2,19 @@
   "resourcePath": "\/courses",
   "apis": [
     {
-      "path": "/courses",
-      "description": "Course Information",
+      "path": "/subjects",
+      "description": "Subject Information",
       "operations": [
         {
           "httpMethod": "GET",
-          "summary": "List all Courses",
-          "notes": "Returns all Courses",
-          "responseClass": "List[Course]",
-          "nickname": "get-courses",
+          "summary": "List all Subjects",
+          "notes": "Returns all Subjects",
+          "responseClass": "List[Subject]",
+          "nickname": "get-subjects",
           "parameters": [
             {
               "name": "offset",
-              "description": "Defaults to 0/",
+              "description": "Defaults to 0",
               "paramType": "query",
               "required": false,
               "allowMultiple": true,
@@ -27,21 +27,6 @@
               "required": false,
               "allowMultiple": true,
               "dataType": "int"
-            },
-            {
-              "name": "level",
-              "description": "If not supplied returns Courses at all levels",
-              "paramType": "query",
-              "required": false,
-              "allowMultiple": true,
-              "dataType": "string",
-              "allowableValues":{
-                "valueType":"LIST",
-                "values":[
-                  "graduate",
-                  "undergraduate"
-                ]
-              }
             }
           ],
           "errorResponses": []
@@ -49,19 +34,19 @@
       ]
     },
     {
-      "path": "/courses/{year}/{course-id}",
-      "description": "Course Information",
+      "path": "/subjects/{year}/{subject-id}",
+      "description": "Subject Information",
       "operations": [
         {
           "httpMethod": "GET",
-          "summary": "Find a Course by YEAR and ID",
-          "notes": "Returns a Course based on the the YEAR and ID",
-          "responseClass": "Course",
-          "nickname": "get-course-by-year-and-id",
+          "summary": "Find a Subject by YEAR and ID",
+          "notes": "Returns a Subject based on the the YEAR and ID",
+          "responseClass": "Subject",
+          "nickname": "get-subject-by-year-and-id",
           "parameters": [
             {
-              "name": "course-id",
-              "description": "ID of Course to be returned",
+              "name": "subject-id",
+              "description": "ID of Subject to be returned",
               "paramType": "path",
               "required": true,
               "allowMultiple": false,
@@ -69,7 +54,7 @@
             },
             {
               "name": "year",
-              "description": "Year of Course to be returned. In {YYYY} format.",
+              "description": "Year of Subject to be returned. In {YYYY} format.",
               "paramType": "path",
               "required": true,
               "allowMultiple": false,
@@ -83,26 +68,26 @@
             },
             {
               "code": 404,
-              "reason": "Course not found"
+              "reason": "Subject not found"
             }
           ]
         }
       ]
     },
     {
-      "path": "/courses/{course-id}",
-      "description": "Course Information",
+      "path": "/subjects/{subject-id}",
+      "description": "Subject Information",
       "operations": [
         {
           "httpMethod": "GET",
-          "summary": "Find a Course by ID",
-          "notes": "Returns a Course based on the Course ID for the CURRENT year",
-          "responseClass": "Course",
-          "nickname": "get-course-by-id",
+          "summary": "Find a Subject by ID",
+          "notes": "Returns a Subject based on the Subject ID for the CURRENT year",
+          "responseClass": "Subject",
+          "nickname": "get-subject-by-id",
           "parameters": [
             {
-              "name": "course-id",
-              "description": "ID of Course to be returned",
+              "name": "subject-id",
+              "description": "ID of Subject to be returned",
               "paramType": "path",
               "required": true,
               "allowMultiple": false,
@@ -116,7 +101,7 @@
             },
             {
               "code": 404,
-              "reason": "Course not found"
+              "reason": "Subject not found"
             }
           ]
         }
@@ -124,8 +109,8 @@
     }
   ],
   "models": {
-    "Course": {
-      "id": "Course",
+    "Suject": {
+      "id": "Suject",
       "properties": {
         "id": {
           "type": "string"
@@ -136,7 +121,7 @@
         "description": {
           "type": "string"
         },
-        "subject-ids": {
+        "course-ids": {
           "items": {
             "type": "string"
           },
@@ -147,7 +132,7 @@
             "type": "string"
           },
           "type": "Array"
-        }        
+        }
       }
     }
   }
