@@ -2,13 +2,69 @@
   "resourcePath": "\/courses",
   "apis": [
     {
+      "path": "/courses",
+      "description": "Course Information",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "Course",
+          "notes": "Returns all Courses",
+          "responseClass": "Array",
+          "nickname": "get-courses",
+          "errorResponses": [
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/courses/{year}/{course-id}",
+      "description": "Course Information",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "Find a Course by YEAR and ID",
+          "notes": "Returns a Course based on the the YEAR and ID",
+          "responseClass": "Course",
+          "nickname": "get-course-by-year-and-id",
+          "parameters": [
+            {
+              "name": "course-id",
+              "description": "ID of Course to be returned",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "dataType": "string"
+            },
+            {
+              "name": "year",
+              "description": "Year of Course to be returned. In {YYYY} format.",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "dataType": "int"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 400,
+              "reason": "ID or YEAR format invalid"
+            },
+            {
+              "code": 404,
+              "reason": "Course not found"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "path": "/courses/{course-id}",
       "description": "Course Information",
       "operations": [
         {
           "httpMethod": "GET",
           "summary": "Find a Course by ID",
-          "notes": "Returns a Course based on the Unique Course ID",
+          "notes": "Returns a Course based on the Course ID for the CURRENT year",
           "responseClass": "Course",
           "nickname": "get-course-by-id",
           "parameters": [
