@@ -27,6 +27,21 @@
               "required": false,
               "allowMultiple": true,
               "dataType": "int"
+            },
+            {
+              "name": "level",
+              "description": "If not supplied returns Subjects at all levels",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": true,
+              "dataType": "string",
+              "allowableValues":{
+                "valueType":"LIST",
+                "values":[
+                  "graduate",
+                  "undergraduate"
+                ]
+              }
             }
           ],
           "errorResponses": []
@@ -109,8 +124,8 @@
     }
   ],
   "models": {
-    "Suject": {
-      "id": "Suject",
+    "Subject": {
+      "id": "Subject",
       "properties": {
         "id": {
           "type": "string"
