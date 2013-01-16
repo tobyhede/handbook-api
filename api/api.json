@@ -1,0 +1,10 @@
+{
+  "apiVersion": "0.0.1",
+  "swaggerVersion": "1.1",
+  "apis": [
+    {
+      "path": "/courses.{format}",
+      "description": ""
+    }
+  ]
+}

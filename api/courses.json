@@ -1,0 +1,60 @@
+{
+  "resourcePath": "\/courses",
+  "apis": [
+    {
+      "path": "/courses/{course-id}",
+      "description": "Course Information",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "Find a Course by ID",
+          "notes": "Returns a Course based on the Unique Course ID",
+          "responseClass": "Course",
+          "nickname": "get-course-by-id",
+          "parameters": [
+            {
+              "name": "course-id",
+              "description": "ID of Course to be returned",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "dataType": "string"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 400,
+              "reason": "ID format invalid"
+            },
+            {
+              "code": 404,
+              "reason": "Course not found"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Course": {
+      "id": "Course",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "subject-ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "Array"
+        }
+      }
+    }
+  }
+}
