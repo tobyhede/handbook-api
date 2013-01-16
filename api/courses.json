@@ -9,10 +9,42 @@
           "httpMethod": "GET",
           "summary": "Course",
           "notes": "Returns all Courses",
-          "responseClass": "Array",
+          "responseClass": "Array[Course]",
           "nickname": "get-courses",
-          "errorResponses": [
-          ]
+          "parameters": [
+            {
+              "name": "offset",
+              "description": "Defaults to 0/",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": true,
+              "dataType": "int"
+            },
+            {
+              "name": "limit",
+              "description": "If not supplied returns all Courses",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": true,
+              "dataType": "int"
+            },
+            {
+              "name": "level",
+              "description": "If not supplied returns Courses at all levels",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": true,
+              "dataType": "string",
+              "allowableValues":{
+                "valueType":"LIST",
+                "values":[
+                  "graduate",
+                  "undergraduate"
+                ]
+              }
+            }
+          ],
+          "errorResponses": []
         }
       ]
     },
