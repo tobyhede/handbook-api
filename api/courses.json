@@ -90,6 +90,47 @@
       ]
     },
     {
+      "path": "/courses/{year}/{course-id}/subjects",
+      "description": "SubjectInformation for Course",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "List Subjects for a Course identified by YEAR and ID",
+          "notes": "Returns all Subjects for the indentified Course",
+          "responseClass": "List[Subject]",
+          "nickname": "get-course-subjects-by-year-and-id",
+          "parameters": [
+            {
+              "name": "course-id",
+              "description": "ID of Course to be returned",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "dataType": "string"
+            },
+            {
+              "name": "year",
+              "description": "Year of Course to be returned. In {YYYY} format.",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "dataType": "int"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 400,
+              "reason": "ID or YEAR format invalid"
+            },
+            {
+              "code": 404,
+              "reason": "Course not found"
+            }
+          ]
+        }
+      ]
+    },    
+    {
       "path": "/courses/{course-id}",
       "description": "Course Information",
       "operations": [
