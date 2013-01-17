@@ -7,8 +7,38 @@
       "description": ""
     },
     {
+      "path": "/majors.{format}"
+    },
+    {
       "path": "/subjects.{format}"
     }
-  
-  ]
+  ],
+  "models": {
+    "Course": {
+      "id": "Course",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "subject-ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "Array"
+        },
+        "major-ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "Array"
+        }        
+      }
+    }
+  }
 }

@@ -1,16 +1,16 @@
 {
-  "resourcePath": "\/courses",
+  "resourcePath": "/majors",
   "apis": [
     {
-      "path": "/courses",
-      "description": "Course Information",
+      "path": "/majors",
+      "description": "Major Information",
       "operations": [
         {
           "httpMethod": "GET",
-          "summary": "List all Courses",
-          "notes": "Returns all Courses",
-          "responseClass": "List[Course]",
-          "nickname": "get-courses",
+          "summary": "List all majors",
+          "notes": "Returns all majors",
+          "responseClass": "List[Major]",
+          "nickname": "get-majors",
           "parameters": [
             {
               "name": "offset",
@@ -27,21 +27,6 @@
               "required": false,
               "allowMultiple": true,
               "dataType": "int"
-            },
-            {
-              "name": "level",
-              "description": "If not supplied returns Courses at all levels",
-              "paramType": "query",
-              "required": false,
-              "allowMultiple": true,
-              "dataType": "string",
-              "allowableValues":{
-                "valueType":"LIST",
-                "values":[
-                  "graduate",
-                  "undergraduate"
-                ]
-              }
             }
           ],
           "errorResponses": []
@@ -49,19 +34,19 @@
       ]
     },
     {
-      "path": "/courses/{year}/{course-id}",
-      "description": "Course Information",
+      "path": "/majors/{year}/{major-id}",
+      "description": "Major Information",
       "operations": [
         {
           "httpMethod": "GET",
-          "summary": "Find a Course by YEAR and ID",
-          "notes": "Returns a Course based on the the YEAR and ID",
-          "responseClass": "Course",
-          "nickname": "get-course-by-year-and-id",
+          "summary": "Find a Major by YEAR and ID",
+          "notes": "Returns a Major based on the the YEAR and ID",
+          "responseClass": "Major",
+          "nickname": "get-major-by-year-and-id",
           "parameters": [
             {
-              "name": "course-id",
-              "description": "ID of Course to be returned",
+              "name": "major-id",
+              "description": "ID of Major to be returned",
               "paramType": "path",
               "required": true,
               "allowMultiple": false,
@@ -69,7 +54,7 @@
             },
             {
               "name": "year",
-              "description": "Year of Course to be returned. In {YYYY} format.",
+              "description": "Year of Major to be returned. In {YYYY} format.",
               "paramType": "path",
               "required": true,
               "allowMultiple": false,
@@ -83,26 +68,26 @@
             },
             {
               "code": 404,
-              "reason": "Course not found"
+              "reason": "Major not found"
             }
           ]
         }
       ]
     },
-    {
-      "path": "/courses/{year}/{course-id}/subjects",
-      "description": "SubjectInformation for Course",
+  {
+      "path": "/majors/{year}/{major-id}/courses",
+      "description": "Course Information for Major",
       "operations": [
         {
           "httpMethod": "GET",
-          "summary": "List Subjects for a Course identified by YEAR and ID",
-          "notes": "Returns all Subjects for the indentified Course",
-          "responseClass": "List[Subject]",
-          "nickname": "get-course-subjects-by-year-and-id",
+          "summary": "List Courses for a Major identified by YEAR and ID",
+          "notes": "Returns all Courses for the indentified Major",
+          "responseClass": "List[Course]",
+          "nickname": "get-major-courses-by-year-and-id",
           "parameters": [
             {
-              "name": "course-id",
-              "description": "ID of Course to be returned",
+              "name": "major-id",
+              "description": "ID of Major to be returned",
               "paramType": "path",
               "required": true,
               "allowMultiple": false,
@@ -110,7 +95,7 @@
             },
             {
               "name": "year",
-              "description": "Year of Course to be returned. In {YYYY} format.",
+              "description": "Year of Major to be returned. In {YYYY} format.",
               "paramType": "path",
               "required": true,
               "allowMultiple": false,
@@ -124,26 +109,67 @@
             },
             {
               "code": 404,
-              "reason": "Course not found"
+              "reason": "Major not found"
+            }
+          ]
+        }
+      ]
+    },        
+    {
+      "path": "/majors/{year}/{major-id}/subjects",
+      "description": "SubjectInformation for Major",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "List Subjects for a Major identified by YEAR and ID",
+          "notes": "Returns all Subjects for the indentified Major",
+          "responseClass": "List[Subject]",
+          "nickname": "get-major-subjects-by-year-and-id",
+          "parameters": [
+            {
+              "name": "major-id",
+              "description": "ID of Major to be returned",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "dataType": "string"
+            },
+            {
+              "name": "year",
+              "description": "Year of Major to be returned. In {YYYY} format.",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "dataType": "int"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 400,
+              "reason": "ID or YEAR format invalid"
+            },
+            {
+              "code": 404,
+              "reason": "Major not found"
             }
           ]
         }
       ]
     },    
     {
-      "path": "/courses/{course-id}",
-      "description": "Course Information",
+      "path": "/majors/{major-id}",
+      "description": "Major Information",
       "operations": [
         {
           "httpMethod": "GET",
-          "summary": "Find a Course by ID",
-          "notes": "Returns a Course based on the Course ID for the CURRENT year",
-          "responseClass": "Course",
-          "nickname": "get-course-by-id",
+          "summary": "Find a Major by ID",
+          "notes": "Returns a Major based on the Major ID for the CURRENT year",
+          "responseClass": "Major",
+          "nickname": "get-major-by-id",
           "parameters": [
             {
-              "name": "course-id",
-              "description": "ID of Course to be returned",
+              "name": "major-id",
+              "description": "ID of Major to be returned",
               "paramType": "path",
               "required": true,
               "allowMultiple": false,
@@ -157,26 +183,26 @@
             },
             {
               "code": 404,
-              "reason": "Course not found"
+              "reason": "Major not found"
             }
           ]
         }
       ]
     },
     {
-      "path": "/courses/{course-id}/subjects",
-      "description": "Subject Information for Course",
+      "path": "/majors/{major-id}/subjects",
+      "description": "Subject Information for Major",
       "operations": [
         {
           "httpMethod": "GET",
-          "summary": "List Subject Information for Course identified by ID",
-          "notes": "Returns all Subjects for a Course identified by ID for the CURRENT year",
+          "summary": "List Subject Information for Major identified by ID",
+          "notes": "Returns all Subjects for a Major identified by ID for the CURRENT year",
           "responseClass": "List[Subject]z",
-          "nickname": "get-subjects-for-course-by-id",
+          "nickname": "get-subjects-for-Major-by-id",
           "parameters": [
             {
-              "name": "course-id",
-              "description": "ID of Course to be returned",
+              "name": "major-id",
+              "description": "ID of Major to be returned",
               "paramType": "path",
               "required": true,
               "allowMultiple": false,
@@ -190,7 +216,7 @@
             },
             {
               "code": 404,
-              "reason": "Course not found"
+              "reason": "Major not found"
             }
           ]
         }
@@ -223,32 +249,6 @@
           },
           "type": "Array"
         }        
-      }
-    },
-    "Major": {
-      "id": "Subject",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "course-ids": {
-          "items": {
-            "type": "string"
-          },
-          "type": "Array"
-        },
-        "subject-ids": {
-          "items": {
-            "type": "string"
-          },
-          "type": "Array"
-        }
       }
     },
     "Major": {
