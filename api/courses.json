@@ -198,61 +198,74 @@
     }
 
   ],
-  "models": {
-    "Course": {
-      "id": "Course",
+  "models": {   
+    "KeyValue": {
+      "id": "KeyValue",
+      "description":"Container Class, for capturing detailed descriptions of other models",
       "properties": {
-        "id": {
+        "key": {
           "type": "string"
         },
-        "name": {
+        "value": {
           "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "subject-ids": {
-          "items": {
-            "type": "string"
-          },
-          "type": "Array"
-        },
-        "major-ids": {
-          "items": {
-            "type": "string"
-          },
-          "type": "Array"
-        }        
-      }
+        }
+      }  
     },
+   "Course": {
+        "id": "Course",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "year": {
+            "type": "int"
+          },
+          "campus": {
+            "type": "string"
+          },        
+          "cricos_code": {
+            "type": "string"
+          },   
+          "details": {
+            "type": "List",
+            "items": {
+             "type":"KeyValue"
+            }
+          },
+          "fee_information": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string"
+          },        
+          "duration": {
+            "type": "string"
+          },
+          "credit_points": {
+            "type": "string"
+          },
+          "subject-ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "Array"
+          },
+          "major-ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "Array"
+          }        
+        }
+      },
     "Major": {
       "id": "Subject",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "course-ids": {
-          "items": {
-            "type": "string"
-          },
-          "type": "Array"
-        },
-        "subject-ids": {
-          "items": {
-            "type": "string"
-          },
-          "type": "Array"
-        }
-      }
-    },
-    "Major": {
-      "id": "Major",
       "properties": {
         "id": {
           "type": "string"
