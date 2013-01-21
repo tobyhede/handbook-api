@@ -1,9 +1,9 @@
 {
-  "resourcePath": "\/courses",
+  "resourcePath": "/courses",
   "apis": [
     {
       "path": "/courses",
-      "description": "Course Information",
+      "description": "Course Information for the current year",
       "operations": [
         {
           "httpMethod": "GET",
@@ -48,6 +48,61 @@
         }
       ]
     },
+   {
+      "path": "/courses/{year}",
+      "description": "Course Information for the specified year",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "List all Courses",
+          "notes": "Returns all Courses",
+          "responseClass": "List[Course]",
+          "nickname": "get-courses",
+          "parameters": [
+            {
+              "name": "offset",
+              "description": "Defaults to 0/",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": true,
+              "dataType": "int"
+            },
+            {
+              "name": "limit",
+              "description": "Defaults to 100",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": true,
+              "dataType": "int"
+            },
+            {
+              "name": "level",
+              "description": "If not supplied returns Courses at all levels",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": true,
+              "dataType": "string",
+              "allowableValues":{
+                "valueType":"LIST",
+                "values":[
+                  "graduate",
+                  "undergraduate"
+                ]
+              }
+            },
+            {
+              "name": "year",
+              "description": "Year of Course to be returned. In {YYYY} format.",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "dataType": "int"
+            }                        
+          ],
+          "errorResponses": []
+        }
+      ]
+    },
     {
       "path": "/courses/{year}/{course-id}",
       "description": "Course Information",
@@ -55,7 +110,7 @@
         {
           "httpMethod": "GET",
           "summary": "Find a Course by YEAR and ID",
-          "notes": "Returns a Course based on the the YEAR and ID",
+          "notes": "Returns a Course based on the specified YEAR and ID",
           "responseClass": "Course",
           "nickname": "get-course-by-year-and-id",
           "parameters": [
@@ -233,10 +288,8 @@
             "type": "string"
           },   
           "details": {
-            "type": "List",
-            "items": {
-             "type":"KeyValue"
-            }
+            "description": "Course details as key/value object",
+            "type": "object"
           },
           "fee_information": {
             "type": "string"
@@ -276,6 +329,10 @@
         "description": {
           "type": "string"
         },
+        "details": {
+          "description": "Course details as key/value object",
+          "type": "object"
+        },
         "course-ids": {
           "items": {
             "type": "string"
@@ -302,6 +359,10 @@
         "description": {
           "type": "string"
         },
+        "details": {
+          "description": "Course details as key/value object",
+          "type": "object"
+        },        
         "course-ids": {
           "items": {
             "type": "string"
