@@ -57,7 +57,7 @@
           "summary": "List all Courses",
           "notes": "Returns all Courses",
           "responseClass": "List[Course]",
-          "nickname": "get-courses",
+          "nickname": "get-courses-for-year",
           "parameters": [
             {
               "name": "offset",
@@ -254,69 +254,57 @@
 
   ],
   "models": {   
-    "KeyValue": {
-      "id": "KeyValue",
-      "description":"Container Class, for capturing detailed descriptions of other models",
+    "Course": {
+      "id": "Course",
       "properties": {
-        "key": {
+        "id": {
           "type": "string"
         },
-        "value": {
+        "name": {
           "type": "string"
-        }
-      }  
+        },
+        "description": {
+          "type": "string"
+        },
+        "year": {
+          "type": "int"
+        },
+        "campus": {
+          "type": "string"
+        },        
+        "cricos_code": {
+          "type": "string"
+        },   
+        "details": {
+          "description": "Course details as key/value object",
+          "type": "object"
+        },
+        "fee_information": {
+          "type": "string"
+        },
+        "level": {
+          "type": "string"
+        },        
+        "duration": {
+          "type": "string"
+        },
+        "credit_points": {
+          "type": "string"
+        },
+        "subject-ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "Array"
+        },
+        "major-ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "Array"
+        }        
+      }
     },
-   "Course": {
-        "id": "Course",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "year": {
-            "type": "int"
-          },
-          "campus": {
-            "type": "string"
-          },        
-          "cricos_code": {
-            "type": "string"
-          },   
-          "details": {
-            "description": "Course details as key/value object",
-            "type": "object"
-          },
-          "fee_information": {
-            "type": "string"
-          },
-          "level": {
-            "type": "string"
-          },        
-          "duration": {
-            "type": "string"
-          },
-          "credit_points": {
-            "type": "string"
-          },
-          "subject-ids": {
-            "items": {
-              "type": "string"
-            },
-            "type": "Array"
-          },
-          "major-ids": {
-            "items": {
-              "type": "string"
-            },
-            "type": "Array"
-          }        
-        }
-      },
     "Major": {
       "id": "Subject",
       "properties": {
@@ -332,6 +320,12 @@
         "details": {
           "description": "Course details as key/value object",
           "type": "object"
+        },
+        "years": {
+          "items": {
+            "type": "Year"
+          },
+          "type": "Array"
         },
         "course-ids": {
           "items": {
@@ -376,6 +370,29 @@
           "type": "Array"
         }
       }
-    }
+    },
+    "Year": {
+      "id": "Year",
+      "properties": {
+        "year": {
+          "type": "int"
+        }, 
+        "core": {
+          "items": {
+            "type": "Subject"
+          },
+          "type": "Array"
+        },
+        "elective": {
+          "items": {
+            "type": "Subject"
+          },
+          "type": "Array"
+        },
+        "elective_count": {
+          "type": "int"
+        }         
+      }    
+    }    
   }
 }

@@ -224,7 +224,7 @@
     }
 
   ],
-  "models": {
+  "models": {   
     "Course": {
       "id": "Course",
       "properties": {
@@ -235,6 +235,31 @@
           "type": "string"
         },
         "description": {
+          "type": "string"
+        },
+        "year": {
+          "type": "int"
+        },
+        "campus": {
+          "type": "string"
+        },        
+        "cricos_code": {
+          "type": "string"
+        },   
+        "details": {
+          "description": "Course details as key/value object",
+          "type": "object"
+        },
+        "fee_information": {
+          "type": "string"
+        },
+        "level": {
+          "type": "string"
+        },        
+        "duration": {
+          "type": "string"
+        },
+        "credit_points": {
           "type": "string"
         },
         "subject-ids": {
@@ -252,7 +277,7 @@
       }
     },
     "Major": {
-      "id": "Major",
+      "id": "Subject",
       "properties": {
         "id": {
           "type": "string"
@@ -262,6 +287,16 @@
         },
         "description": {
           "type": "string"
+        },
+        "details": {
+          "description": "Course details as key/value object",
+          "type": "object"
+        },
+        "years": {
+          "items": {
+            "type": "Year"
+          },
+          "type": "Array"
         },
         "course-ids": {
           "items": {
@@ -289,6 +324,10 @@
         "description": {
           "type": "string"
         },
+        "details": {
+          "description": "Course details as key/value object",
+          "type": "object"
+        },        
         "course-ids": {
           "items": {
             "type": "string"
@@ -302,6 +341,29 @@
           "type": "Array"
         }
       }
-    }
+    },
+    "Year": {
+      "id": "Year",
+      "properties": {
+        "year": {
+          "type": "int"
+        }, 
+        "core": {
+          "items": {
+            "type": "Subject"
+          },
+          "type": "Array"
+        },
+        "elective": {
+          "items": {
+            "type": "Subject"
+          },
+          "type": "Array"
+        },
+        "elective_count": {
+          "type": "int"
+        }         
+      }    
+    }    
   }
 }
