@@ -225,6 +225,18 @@
 
   ],
   "models": {   
+    "Summary": {
+      "id": "Summary",
+      "properties" : {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["id", "name"]
+    },
     "Course": {
       "id": "Course",
       "properties": {
@@ -264,16 +276,19 @@
         },
         "subject-ids": {
           "items": {
-            "type": "string"
+            "type": "Summary"
           },
           "type": "Array"
         },
         "major-ids": {
           "items": {
-            "type": "string"
+            "type": "Summary"
           },
           "type": "Array"
-        }        
+        }, 
+        "handbook-url": {
+          "type": "string"
+        }
       }
     },
     "Major": {
@@ -300,15 +315,18 @@
         },
         "course-ids": {
           "items": {
-            "type": "string"
+            "type": "Summary"
           },
           "type": "Array"
         },
         "subject-ids": {
           "items": {
-            "type": "string"
+            "type": "Summary"
           },
           "type": "Array"
+        },
+        "handbook-url": {
+          "type": "string"
         }
       }
     },
@@ -336,10 +354,13 @@
         },
         "major-ids": {
           "items": {
-            "type": "string"
+            "type": "Summary"
           },
           "type": "Array"
         }
+      },
+      "handbook-url": {
+        "type": "string"
       }
     },
     "Year": {
@@ -350,13 +371,13 @@
         }, 
         "core": {
           "items": {
-            "type": "Subject"
+            "type": "Summary"
           },
           "type": "Array"
         },
         "elective": {
           "items": {
-            "type": "Subject"
+            "type": "Summary"
           },
           "type": "Array"
         },

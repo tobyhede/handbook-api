@@ -1,0 +1,51 @@
+
+        "subjects": {
+          "items": {
+            "type": "Subject"
+          },
+          "type": "Array"
+        },
+
+
+              "elective_count": 1  
+    "Year": {
+      "id": "Year",
+      "properties": {
+        "year": "int", 
+        "core": {
+          "items": {
+            "type": "Subject"
+          },
+          "type": "Array"
+        },
+        "elective": {
+          "items": {
+            "type": "Subject"
+          },
+          "type": "Array"
+        },
+        "elective_count": "int"         
+      }    
+    }
+
+
+
+
+
+
+
+
+
+
+    "KeyValue": {
+      "id": "KeyValue",
+      "description":"Container Class, for capturing detailed descriptions of other models",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }  
+    },
