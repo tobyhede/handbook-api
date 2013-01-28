@@ -100,6 +100,14 @@
               "required": true,
               "allowMultiple": false,
               "dataType": "int"
+            },
+            {
+              "name": "summary",
+              "description": "API endpoint returns a List[Summary] if summary == true",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": false,
+              "dataType": "boolean"
             }
           ],
           "errorResponses": [
@@ -141,6 +149,14 @@
               "required": true,
               "allowMultiple": false,
               "dataType": "int"
+            },
+            {
+              "name": "summary",
+              "description": "API endpoint returns a List[Summary] if summary == true",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": false,
+              "dataType": "boolean"
             }
           ],
           "errorResponses": [
@@ -197,7 +213,7 @@
           "httpMethod": "GET",
           "summary": "List Subject Information for Major identified by ID",
           "notes": "Returns all Subjects for a Major identified by ID for the CURRENT year",
-          "responseClass": "List[Subject]z",
+          "responseClass": "List[Subject]",
           "nickname": "get-subjects-for-Major-by-id",
           "parameters": [
             {
@@ -207,6 +223,55 @@
               "required": true,
               "allowMultiple": false,
               "dataType": "string"
+            },
+            {
+              "name": "summary",
+              "description": "API endpoint returns a List[Summary] if summary == true",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": false,
+              "dataType": "boolean"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 400,
+              "reason": "ID format invalid"
+            },
+            {
+              "code": 404,
+              "reason": "Major not found"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/majors/{major-id}/courses",
+      "description": "Course Information for Major",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "List Course Information for Major identified by ID",
+          "notes": "Returns all Courses for a Major identified by ID for the CURRENT year",
+          "responseClass": "List[Course]",
+          "nickname": "get-courses-for-Major-by-id",
+          "parameters": [
+            {
+              "name": "major-id",
+              "description": "ID of Major to be returned",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "dataType": "string"
+            },
+            {
+              "name": "summary",
+              "description": "API endpoint returns a List[Summary] if summary == true",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": false,
+              "dataType": "boolean"
             }
           ],
           "errorResponses": [

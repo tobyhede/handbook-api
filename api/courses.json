@@ -42,6 +42,14 @@
                   "undergraduate"
                 ]
               }
+            },
+            {
+              "name": "summary",
+              "description": "API endpoint returns a List[Summary] if summary == true",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": false,
+              "dataType": "boolean"
             }
           ],
           "errorResponses": []
@@ -97,6 +105,14 @@
               "required": true,
               "allowMultiple": false,
               "dataType": "int"
+            },
+            {
+              "name": "summary",
+              "description": "API endpoint returns a List[Summary] if summary == true",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": false,
+              "dataType": "boolean"
             }                        
           ],
           "errorResponses": []
@@ -170,6 +186,14 @@
               "required": true,
               "allowMultiple": false,
               "dataType": "int"
+            },
+            {
+              "name": "summary",
+              "description": "API endpoint returns a List[Summary] if summary == true",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": false,
+              "dataType": "boolean"
             }
           ],
           "errorResponses": [
@@ -236,6 +260,14 @@
               "required": true,
               "allowMultiple": false,
               "dataType": "string"
+            },
+            {
+              "name": "summary",
+              "description": "API endpoint returns a List[Summary] if summary == true",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": false,
+              "dataType": "boolean"
             }
           ],
           "errorResponses": [
@@ -269,7 +301,15 @@
               "required": true,
               "allowMultiple": false,
               "dataType": "string"
-            }
+            },
+            {
+              "name": "summary",
+              "description": "API endpoint returns a List[Summary] if summary == true",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": false,
+              "dataType": "boolean"
+            }            
           ],
           "errorResponses": [
             {
