@@ -226,8 +226,41 @@
           "httpMethod": "GET",
           "summary": "List Subject Information for Course identified by ID",
           "notes": "Returns all Subjects for a Course identified by ID for the CURRENT year",
-          "responseClass": "List[Subject]z",
+          "responseClass": "List[Subject]",
           "nickname": "get-subjects-for-course-by-id",
+          "parameters": [
+            {
+              "name": "course-id",
+              "description": "ID of Course to be returned",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "dataType": "string"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 400,
+              "reason": "ID format invalid"
+            },
+            {
+              "code": 404,
+              "reason": "Course not found"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/courses/{course-id}/majors",
+      "description": "Major Information for Course",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "List Major Information for Course identified by ID",
+          "notes": "Returns all Majors for a Course identified by ID for the CURRENT year",
+          "responseClass": "List[Major]",
+          "nickname": "get-majors-for-course-by-id",
           "parameters": [
             {
               "name": "course-id",

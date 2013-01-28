@@ -121,7 +121,48 @@
           ]
         }
       ]
-    }
+    },
+    {
+      "path": "/subjects/{subject-id}/courses",
+      "description": "Course Information for a Subject",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "Find a Subject by ID",
+          "notes": "Returns a list of Courses for the Subject identified by Subject ID",
+          "responseClass": "List[Course]",
+          "nickname": "get-subject-courses-by-id",
+          "parameters": [
+            {
+              "name": "subject-id",
+              "description": "ID of Subject to be returned",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "dataType": "string"
+            },
+            {
+              "name": "summary",
+              "description": "API endpoint returns a List[Summary] if summary == true",
+              "paramType": "query",
+              "required": false,
+              "allowMultiple": false,
+              "dataType": "boolean"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 400,
+              "reason": "ID format invalid"
+            },
+            {
+              "code": 404,
+              "reason": "Subject not found"
+            }
+          ]
+        }
+      ]
+    }    
   ],
   "models": {   
     "Summary": {
